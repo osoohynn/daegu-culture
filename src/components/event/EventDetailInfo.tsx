@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { Event } from '../../types';
+import { type Event } from '../../types';
 import { Card, Badge, Button } from '../common';
 import { useAuth } from '../../hooks/useAuth';
 import { useBookmarks } from '../../hooks/useBookmarks';
@@ -14,7 +14,7 @@ interface EventDetailInfoProps {
 }
 
 export const EventDetailInfo = ({ event, className }: EventDetailInfoProps) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { user } = useAuth();
   const { isBookmarked, addBookmark, removeBookmark, isLoading } = useBookmarks();
   
@@ -75,7 +75,7 @@ export const EventDetailInfo = ({ event, className }: EventDetailInfoProps) => {
               eventStatus === 'ended' && 'text-gray-600'
             )}
           >
-            {getEventStatusLabel(eventStatus, t.language)}
+            {getEventStatusLabel(eventStatus, i18n.language)}
           </Badge>
           
           <Badge
@@ -106,7 +106,7 @@ export const EventDetailInfo = ({ event, className }: EventDetailInfoProps) => {
                   {t('event.date', '행사 날짜')}
                 </dt>
                 <dd className="text-gray-900">
-                  {formatDateRange(event.startDate, event.endDate, t.language)}
+                  {formatDateRange(event.startDate, event.endDate, i18n.language)}
                 </dd>
               </div>
             </div>

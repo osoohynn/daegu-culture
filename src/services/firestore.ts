@@ -2,15 +2,12 @@ import {
   collection,
   doc,
   addDoc,
-  getDoc,
   getDocs,
-  setDoc,
   updateDoc,
   deleteDoc,
   query,
   where,
   orderBy,
-  limit,
   serverTimestamp,
   onSnapshot,
   Timestamp,
@@ -22,7 +19,7 @@ import {
   deleteObject
 } from 'firebase/storage';
 import { db, storage } from '../firebase';
-import type { Event, Review, Bookmark } from '../types';
+import type { Review } from '../types';
 import toast from 'react-hot-toast';
 
 // 타입 정의

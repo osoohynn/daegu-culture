@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { type ReactNode } from 'react';
 import { Button } from './Button';
 import { cn } from '../../utils/cn';
 

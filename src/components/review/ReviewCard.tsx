@@ -1,6 +1,5 @@
 import { useTranslation } from 'react-i18next';
 import type { Review } from '../../types';
-import { useAuth } from '../../hooks/useAuth';
 import { cn } from '../../utils/cn';
 
 interface ReviewCardProps {
@@ -14,12 +13,12 @@ export const ReviewCard = ({
   className,
   showEventTitle = false
 }: ReviewCardProps) => {
-  const { t } = useTranslation();
-  
-  const formatDate = (timestamp: unknown) => {
+  const { t, i18n } = useTranslation();
+
+  const formatDate = (timestamp: any) => {
     try {
       const date = timestamp.toDate();
-      return date.toLocaleDateString(t.language === 'ko' ? 'ko-KR' : 'en-US');
+      return date.toLocaleDateString(i18n.language === 'ko' ? 'ko-KR' : 'en-US');
     } catch {
       return '';
     }

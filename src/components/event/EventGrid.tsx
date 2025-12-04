@@ -1,4 +1,4 @@
-import { Event } from '../../types';
+import { type Event } from '../../types';
 import { EventCard } from './EventCard';
 import { SkeletonCard, EmptyState } from '../common';
 import { cn } from '../../utils/cn';

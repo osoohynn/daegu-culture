@@ -13,41 +13,33 @@ export const Home = () => {
   const [filteredEvents, setFilteredEvents] = useState<Event[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-  const [apiStatus, setApiStatus] = useState<string>('');
 
   const fetchEvents = async () => {
     try {
       setLoading(true);
-      setError(null);
-      setApiStatus('API 연결 시도 중...');
-      
+
       console.log('API 서비스를 통한 데이터 로딩 시작');
-      
+
       // API 서비스를 통한 통합 이벤트 조회 - 모든 카테고리 데이터를 한번에 로딩
-      setApiStatus('공공데이터 API에서 대구 행사 정보 불러오는 중...');
       const eventsData = await apiService.getAllEvents({
         category: 'all'
       });
-      
+
       console.log('API 서비스에서 받은 데이터:', eventsData);
-      
+
       if (eventsData && eventsData.length > 0) {
         setAllEvents(eventsData);
         setFilteredEvents(eventsData);
-        setApiStatus('✅ 공공데이터 API 연동 성공!');
         toast.success(`${eventsData.length}개의 행사를 불러왔습니다`);
         setLoading(false);
         return;
       } else {
-        setApiStatus('🔄 API에서 데이터를 찾을 수 없음 - 샘플 데이터 표시');
         throw new Error('API에서 데이터를 찾을 수 없음');
       }
 
     } catch (error) {
       console.error('데이터 로딩 실패:', error);
       const errorMessage = 'API 연결 실패 - 데이터를 불러올 수 없습니다';
-      setError(errorMessage);
       toast.error(errorMessage);
 
       // API 실패 시 빈 배열

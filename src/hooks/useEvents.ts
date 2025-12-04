@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { apiService } from '../services/api';
-import { Event } from '../types';
+import { type Event } from '../types';
 import { CATEGORIES } from '../utils/constants';
 
 interface UseEventsParams {
@@ -31,8 +31,17 @@ export const useEvents = (params: UseEventsParams = {}): UseEventsReturn => {
       setLoading(true);
       setError(null);
 
+      // CATEGORIES 값을 소문자로 변환
+      let category: 'all' | 'festival' | 'tourist' | 'culture' | 'travel' | undefined = 'all';
+      if (params.category) {
+        const categoryValue = CATEGORIES[params.category];
+        if (categoryValue === 'all' || categoryValue === 'festival' || categoryValue === 'performance' || categoryValue === 'exhibition') {
+          category = categoryValue as 'all' | 'festival';
+        }
+      }
+
       const apiParams = {
-        category: params.category === 'all' ? 'all' as const : params.category,
+        category,
         keyword: params.keyword,
         startDate: params.startDate,
         endDate: params.endDate,

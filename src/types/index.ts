@@ -4,7 +4,7 @@ import { Timestamp } from 'firebase/firestore';
 export interface Event {
   id: string;
   title: string;
-  category: 'tourist' | 'culture' | 'festival' | 'travel' | 'all';
+  category: 'tourist' | 'culture' | 'festival' | 'travel' | 'all' | 'performance' | 'exhibition';
   date: string;
   startDate: string;
   endDate: string;
@@ -101,9 +101,9 @@ export interface FestivalItem {
 
 // 필터 타입
 export interface EventFilters {
-  category: 'all' | 'tourist' | 'culture' | 'festival' | 'travel';
+  category: 'all' | 'tourist' | 'culture' | 'festival' | 'travel' | 'performance' | 'exhibition';
   search: string;
-  dateFilter?: 'ongoing' | 'upcoming' | 'ended';
+  dateFilter?: 'ongoing' | 'upcoming' | 'ended' | '';
   sortBy?: 'latest' | 'popular';
 }
 

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Button, Input } from '../common';
-import { EventFilters } from '../../types';
+import { type EventFilters } from '../../types';
 import { CATEGORIES, CATEGORY_LABELS, CATEGORY_LABELS_EN } from '../../utils/constants';
 import { debounce } from '../../utils/helpers';
 import { cn } from '../../utils/cn';
@@ -142,7 +142,7 @@ export const FilterBar = ({ filters, onFiltersChange, className }: FilterBarProp
                   key={filter.value}
                   variant={filters.dateFilter === filter.value ? 'secondary' : 'ghost'}
                   size="sm"
-                  onClick={() => handleDateFilterChange(filter.value === 'all' ? undefined : filter.value)}
+                  onClick={() => handleDateFilterChange(filter.value === 'all' ? '' : filter.value)}
                   className="whitespace-nowrap"
                 >
                   {filter.label}

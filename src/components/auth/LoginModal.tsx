@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
 import toast from 'react-hot-toast';
 import { authService } from '../../services/auth';
 
@@ -10,7 +9,6 @@ interface LoginModalProps {
 }
 
 export const LoginModal = ({ isOpen, onClose, onLoginSuccess }: LoginModalProps) => {
-  const { t } = useTranslation();
   const [loading, setLoading] = useState(false);
 
   // ESC 키로 모달 닫기 - hooks는 항상 같은 순서로 호출되어야 함

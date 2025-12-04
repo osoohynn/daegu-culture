@@ -103,7 +103,7 @@ export const useReviews = (eventId?: string): UseReviewsReturn => {
       await firestoreService.createReview(
         user.uid,
         user.displayName || '익명 사용자',
-        user.photoURL,
+        user.photoURL || undefined,
         params.eventId,
         params.eventTitle,
         params.rating,

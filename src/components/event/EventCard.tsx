@@ -1,10 +1,10 @@
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { Event } from '../../types';
+import { type Event } from '../../types';
 import { Card, Badge, Button } from '../common';
 import { useAuth } from '../../hooks/useAuth';
 import { useBookmarks } from '../../hooks/useBookmarks';
-import { formatDateRange, getCategoryColor, getEventStatus, getEventStatusLabel } from '../../utils/helpers';
+import { formatDateRange, getEventStatus, getEventStatusLabel } from '../../utils/helpers';
 import { cn } from '../../utils/cn';
 
 interface EventCardProps {
@@ -13,7 +13,7 @@ interface EventCardProps {
 }
 
 export const EventCard = ({ event, className }: EventCardProps) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const { user } = useAuth();
   const { isBookmarked, addBookmark, removeBookmark, isLoading } = useBookmarks();
@@ -88,7 +88,7 @@ export const EventCard = ({ event, className }: EventCardProps) => {
               eventStatus === 'ended' && 'text-gray-600'
             )}
           >
-            {getEventStatusLabel(eventStatus, t.language)}
+            {getEventStatusLabel(eventStatus, i18n.language)}
           </Badge>
         </div>
         
@@ -134,7 +134,7 @@ export const EventCard = ({ event, className }: EventCardProps) => {
           <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
           </svg>
-          {formatDateRange(event.startDate, event.endDate, t.language)}
+          {formatDateRange(event.startDate, event.endDate, i18n.language)}
         </div>
         
         {/* 장소 */}
