@@ -136,7 +136,7 @@ function Navigation() {
 function App() {
   return (
     <AuthProvider>
-      <Router>
+      <Router basename="/daegu-culture">
         <div className="min-h-screen bg-gray-50">
           <Navigation />
           

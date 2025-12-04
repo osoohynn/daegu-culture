@@ -4,6 +4,7 @@ import { VitePWA } from "vite-plugin-pwa";
 import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
+  base: '/daegu-culture/',
   plugins: [
     react(),
     tailwindcss(),
@@ -12,9 +13,9 @@ export default defineConfig({
       manifest: {
         name: "Web-silmu PWA",
         short_name: "Web-silmu",
-        start_url: "/Web-silmu-pwa/",
-        scope: "/Web-silmu-pwa/",
-        id: "/Web-silmu-pwa/",
+        start_url: "/daegu-culture/",
+        scope: "/daegu-culture/",
+        id: "/daegu-culture/",
         display: "standalone",
         background_color: "#ffffff",
         theme_color: "#ffffff",

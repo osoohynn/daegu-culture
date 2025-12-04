@@ -364,12 +364,14 @@ focus:outline-none focus:ring-2 focus:ring-blue-500
 ## 배포 준비사항
 
 ### 환경 변수 설정
-```env
-VITE_FIREBASE_API_KEY=your_api_key
-VITE_FIREBASE_AUTH_DOMAIN=your_domain
-VITE_FIREBASE_PROJECT_ID=your_project_id
-VITE_PUBLIC_DATA_API_KEY=your_api_key
-```
+
+2. **GitHub Pages 설정**
+   - Repository → Settings → Pages
+   - Source: "GitHub Actions" 선택
+
+3. **배포**
+   - `main` 브랜치에 push하면 자동으로 빌드 및 배포됩니다
+   - Actions 탭에서 배포 진행 상황 확인 가능
 
 ### 빌드 최적화
 - CSS 압축 (Tailwind CSS 4 자동)
